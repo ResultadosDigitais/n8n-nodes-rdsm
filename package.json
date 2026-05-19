@@ -8,9 +8,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ResultadosDigitais/n8n-nodes-rd.git"//editar
+        "url": "git+https://github.com/ResultadosDigitais/n8n-nodes-rdsm.git"//editar
     },
-    "homepage": "https://github.com/ResultadosDigitais/n8n-nodes-rd#readme",
+    "homepage": "https://github.com/ResultadosDigitais/n8n-nodes-rdsm#readme",
     "bugs": {
         "url": "https://github.com/ResultadosDigitais/n8n-nodes-rdsm/issues"
     },
