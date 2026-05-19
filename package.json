@@ -1,0 +1,60 @@
+{
+    "name": "n8n-nodes-rdsm",
+    "version": "0.0.1",
+    "description": "n8n nodes for RD Station Marketing",
+    "author": {
+        "name": "Resultados Digitais",
+        "email": "ia@rdstation.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ResultadosDigitais/n8n-nodes-rd.git"//editar
+    },
+    "homepage": "https://github.com/ResultadosDigitais/n8n-nodes-rd#readme",
+    "bugs": {
+        "url": "https://github.com/ResultadosDigitais/n8n-nodes-rdsm/issues"
+    },
+    "keywords": [
+        "n8n-community-node-package",
+        "n8n",
+        "rd-station",
+        "rd-station-marketing"
+    ],
+    "license": "MIT",
+    "type": "commonjs",
+    "main": "dist/nodes/RdStationCrm/RdStationCrm.node.js", //editar
+    "scripts": {
+        "build": "n8n-node build",
+        "dev": "n8n-node dev",
+        "lint": "n8n-node lint",
+        "lint:fix": "n8n-node lint --fix",
+        "release": "n8n-node release",
+        "prepublishOnly": "n8n-node prerelease"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "n8n": {
+        "n8nNodesApiVersion": 1,
+        "strict": true,
+        "nodes": [
+            "dist/nodes/RdStationCrm/RdStationCrm.node.js", //editar
+            "dist/nodes/RdStationCrmTrigger/RdStationCrmTrigger.node.js"//editar
+        ],
+        "credentials": [
+            "dist/nodes/RdStationCrm/RdStationCrmApi.credentials.js"//editar
+        ]
+    },
+    "devDependencies": {
+        "@n8n/node-cli": "0.23.1",
+        "@types/node": "20.10.0",
+        "n8n-workflow": "2.13.1",
+        "release-it": "19.2.4",
+        "typescript": "5.3.3"
+    },
+    "peerDependencies": {
+        "n8n-workflow": "*"
+    }
+}
