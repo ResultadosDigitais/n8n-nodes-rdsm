@@ -1,0 +1,46 @@
+{
+	"name": "n8n-nodes-rd-station-marketing",
+	"version": "0.0.1",
+	"description": "n8n community node for RD Station Marketing",
+	"author": {
+		"name": "Resultados Digitais",
+		"email": "ia@rdstation.com"
+	},
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"rd-station",
+		"rd-station-marketing"
+	],
+	"license": "MIT",
+	"type": "commonjs",
+	"main": "dist/nodes/RdStationMarketing/RdStationMarketing.node.js",
+	"scripts": {
+		"build": "n8n-node build"
+	},
+	"files": [
+		"dist",
+		"LICENSE",
+		"README.md"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"nodes": [
+			"dist/nodes/RdStationMarketing/RdStationMarketing.node.js",
+			"dist/nodes/RdStationMarketing/RdStationMarketingTrigger.node.js"
+		],
+		"credentials": [
+			"dist/nodes/RdStationMarketing/RdStationMarketingApi.credentials.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.23.1",
+		"@types/node": "20.10.0",
+		"n8n-workflow": "2.13.1",
+		"typescript": "5.3.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
