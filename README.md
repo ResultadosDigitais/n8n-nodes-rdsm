@@ -1,82 +1,44 @@
-# Name of Project
+# n8n-nodes-rd-station-marketing
 
-The first phrase should describe the project briefly, for example, this is the main template to be used by all RD Github Repositories. 
+Community node to integrate n8n with RD Station Marketing.
 
-Second paragraph is dedicated to describe it: What this library/api/whatever does and what does not. 
-What the advantagens of this project? Why use it instead another public library. For example, 
-by using this api, we abstract what log library is used in order to provide a simple interface 
-to developers that wants to log into pre-defined formats.  
+## Implemented Resources
 
-## Audience
+| Resource | Operations |
+| --- | --- |
+| Contact | Create, Get, Update, Delete, Add Tags, Get Events |
+| Conversion and Trigger | Create Conversion Event |
+| Custom Field | Get Many, Create, Update, Delete |
+| E-Commerce Event | Checkout Started, Abandoned Cart, Order Paid, Order Canceled, Order Fulfilled, Shipment Delivered |
+| Qualification and Funnel | Get Contact Funnels, Mark Lead as Opportunity, Mark Opportunity as Won, Mark Opportunity as Lost, Update Contact Funnel |
 
-Describe here the main audience from this project. Eg: This Template is designed for Developers or Tech Leaders. 
+## Implemented Triggers
 
-## Useful terminology
+| Trigger | Events |
+| --- | --- |
+| RD Station Marketing Trigger | Converted, Marked Opportunity |
 
-Lists definitions of terms that the reader needs to know to follow the tutorial. For example: what is lead? what is a conversion? You include charts here
+## Authentication
 
-![pretty-diagram](https://user-images.githubusercontent.com/18356186/54356236-e163b900-4639-11e9-9bb1-e171bcd2a025.png)
+Credential: RD Station Marketing (OAuth2).
 
-## Getting started
+The credential supports Staging and Production environments.
 
-### Requirements
+API base URLs:
 
-Lists concepts the reader should be familiar with prior to starting, as well as any software or hardware requirements. 
-If possible, please create a link to instalation documentation or use it inline.
+- Production: `https://api.rd.services`
+- Staging: `https://api-staging.rd.services`
 
-* [rd-docker installed](https://oraculo.rdstation.com.br/referencias/wiki/como-configurar-o-ambiente-de-desenvolvimento-utilizando-docker)
-* Rails v6.2 installed
-* Ruby v2.7.x installed
-* Any of my dependencies up and running:
+OAuth URLs are selected automatically from the environment.
 
-```bash
-$ gem install my_dep_here
-```
-
-### Running in Local Environment
-
-Provide description how to run locally but also command lines:
-
-1. Start Container
-```bash
-$ rd-docker s
-```
-2. Access http://localhost:8008
-
-3. Login using default credentials:
-* Username: my_user
-* Password: my_pass
-
-### Running Tests
-
-Provide description how to run tests locally. Command lines are really important:
+## Local Development
 
 ```bash
-$ rd-docker c
-$ rspec .
+npm install
+npm run build
+npm run lint
 ```
 
-### Runing in Production environment
+## License
 
-Explains how to run in production environment and apply your changes too.
-
-1. Access [Spinnaker](https://spinnaker.rdops.systems/#/applications/my-app/clusters);
-2. Go to Pipelines on left menu. Click on em `Start Manual Execution` on disered execution
-
-<img src="https://user-images.githubusercontent.com/9935397/82076477-48548600-96b4-11ea-8a13-84e14f6463b0.png" height="300">
-
-3. Choose the branch
-
-<img src="https://user-images.githubusercontent.com/9935397/82076681-979ab680-96b4-11ea-948f-974a3d518378.png" height="300">
-
-4. Click on Run. 
-5. Wait until finished
-6. Test it using [Production URL](https://www.google.com)
-7. Click on Continue to merge it
-
-## What's next (Optional)
-
-* Bullet points
-* That you believe
-* Are the next steps
-* But don't try to predict all your future
+[MIT](./LICENSE)
