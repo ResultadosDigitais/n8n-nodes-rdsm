@@ -1,21 +1,21 @@
-# n8n-nodes-rd-station-marketing
+# n8n-nodes-rdsm
 
 Community node to integrate n8n with RD Station Marketing.
 
 ## Implemented Resources
 
-| Resource | Operations |
-| --- | --- |
-| Contact | Create, Get, Update, Delete, Add Tags, Get Events |
-| Conversion and Trigger | Create Conversion Event |
-| Custom Field | Get Many, Create, Update, Delete |
-| E-Commerce Event | Checkout Started, Abandoned Cart, Order Paid, Order Canceled, Order Fulfilled, Shipment Delivered |
+| Resource                 | Operations                                                                                                              |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Contact                  | Create, Get, Update, Delete, Add Tags, Get Events                                                                       |
+| Conversion and Trigger   | Create Conversion Event                                                                                                 |
+| Custom Field             | Get Many, Create, Update, Delete                                                                                        |
+| E-Commerce Event         | Checkout Started, Abandoned Cart, Order Paid, Order Canceled, Order Fulfilled, Shipment Delivered                       |
 | Qualification and Funnel | Get Contact Funnels, Mark Lead as Opportunity, Mark Opportunity as Won, Mark Opportunity as Lost, Update Contact Funnel |
 
 ## Implemented Triggers
 
-| Trigger | Events |
-| --- | --- |
+| Trigger                      | Events                        |
+| ---------------------------- | ----------------------------- |
 | RD Station Marketing Trigger | Converted, Marked Opportunity |
 
 ## Authentication
