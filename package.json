@@ -56,8 +56,5 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
-  },
-  "overrides": {
-    "eslint": "9.39.1"
   }
 }
