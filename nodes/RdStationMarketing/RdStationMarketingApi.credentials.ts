@@ -15,28 +15,19 @@ export class RdStationMarketingApi implements ICredentialType {
 			default: 'authorizationCode',
 		},
 		{
-			displayName: 'Environment',
-			name: 'environment',
-			type: 'options',
-			options: [
-				{
-					name: 'Staging',
-					value: 'staging',
-				},
-				{
-					name: 'Production',
-					value: 'production',
-				},
-			],
-			default: 'staging',
+			displayName: 'Base URL',
+			name: 'baseUrl',
+			type: 'string',
+			required: true,
+			default: 'https://api.rd.services',
+			description: 'Base URL for RD Station Marketing API requests. Do not include a trailing slash.',
 		},
 		{
 			displayName: 'Authorization URL',
 			name: 'authUrl',
 			type: 'hidden',
 			required: true,
-			default:
-				'={{ $self["environment"] === "production" ? "https://accounts.rdstation.com/oauth/authorize" : "https://api-staging.rd.services/auth/dialog" }}',
+			default: 'https://accounts.rdstation.com/oauth/authorize',
 		},
 		{
 			displayName: 'Access Token URL',
@@ -44,7 +35,7 @@ export class RdStationMarketingApi implements ICredentialType {
 			type: 'hidden',
 			required: true,
 			default:
-				'={{ $self["environment"] === "production" ? "https://api.rd.services/oauth2/token" : "https://api-staging.rd.services/auth/token?token_by=code" }}',
+				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/oauth2/token" }}',
 		},
 		{
 			displayName: 'Scope',
