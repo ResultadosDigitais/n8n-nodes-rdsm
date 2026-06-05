@@ -34,7 +34,8 @@ export class RdStationMarketingApi implements ICredentialType {
 			name: 'accessTokenUrl',
 			type: 'hidden',
 			required: true,
-			default: '={{ $self["baseUrl"].replace(new RegExp("/+$"), "") + "/oauth2/token" }}',
+			default:
+				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/oauth2/token" }}',
 		},
 		{
 			displayName: 'Scope',

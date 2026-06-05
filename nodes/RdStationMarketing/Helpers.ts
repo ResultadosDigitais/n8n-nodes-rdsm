@@ -60,6 +60,14 @@ function toApiErrorResponse(error: unknown, options: IHttpRequestOptions): JsonO
 
 const DEFAULT_MARKETING_BASE_URL = 'https://api.rd.services';
 
+function stripTrailingSlashes(value: string): string {
+	let normalized = value;
+	while (normalized.endsWith('/')) {
+		normalized = normalized.slice(0, -1);
+	}
+	return normalized;
+}
+
 type EnvironmentContext =
 	| Pick<IExecuteFunctions, 'getCredentials'>
 	| Pick<ILoadOptionsFunctions, 'getCredentials'>
@@ -90,7 +98,7 @@ export async function getRdMarketingBaseUrl(
 	if (!baseUrl) {
 		return DEFAULT_MARKETING_BASE_URL;
 	}
-	return baseUrl.replace(/\/+$/, '');
+	return stripTrailingSlashes(baseUrl);
 }
 
 export async function rdMarketingRequest<T = IDataObject | IDataObject[]>(
