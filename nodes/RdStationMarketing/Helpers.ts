@@ -58,36 +58,13 @@ function toApiErrorResponse(error: unknown, options: IHttpRequestOptions): JsonO
 	};
 }
 
-export type RdMarketingEnvironment = 'production' | 'staging';
-
-const MARKETING_BASE_URLS: Record<RdMarketingEnvironment, string> = {
-	production: 'https://api.rd.services',
-	staging: 'https://api-staging.rd.services',
-};
+const DEFAULT_MARKETING_BASE_URL = 'https://api.rd.services';
 
 type EnvironmentContext =
 	| Pick<IExecuteFunctions, 'getCredentials'>
 	| Pick<ILoadOptionsFunctions, 'getCredentials'>
 	| Pick<IHookFunctions, 'getCredentials'>
 	| Pick<IWebhookFunctions, 'getCredentials'>;
-
-function normalizeEnvironment(value: unknown): RdMarketingEnvironment | undefined {
-	const raw = String(value ?? '').trim().toLowerCase();
-	if (raw === 'production') return 'production';
-	if (raw === 'staging') return 'staging';
-	return undefined;
-}
-
-function inferEnvironmentFromCredential(
-	credentials: ICredentialDataDecryptedObject,
-): RdMarketingEnvironment | undefined {
-	const authUrl = String(credentials.authUrl ?? '').toLowerCase();
-	const tokenUrl = String(credentials.accessTokenUrl ?? '').toLowerCase();
-	const merged = `${authUrl} ${tokenUrl}`;
-	if (merged.includes('staging')) return 'staging';
-	if (merged.includes('api.rd.services') || merged.includes('accounts.rdstation.com')) return 'production';
-	return undefined;
-}
 
 async function getCredentialsSafely(
 	context: EnvironmentContext,
@@ -104,28 +81,16 @@ async function getCredentialsSafely(
 	}
 }
 
-export async function getRdMarketingEnvironment(
-	context: EnvironmentContext,
-	itemIndex = 0,
-): Promise<RdMarketingEnvironment> {
-	const credentials = await getCredentialsSafely(context, itemIndex);
-	if (credentials) {
-		const explicitEnvironment = normalizeEnvironment(credentials.environment);
-		if (explicitEnvironment) return explicitEnvironment;
-
-		const inferredEnvironment = inferEnvironmentFromCredential(credentials);
-		if (inferredEnvironment) return inferredEnvironment;
-	}
-
-	return 'staging';
-}
-
 export async function getRdMarketingBaseUrl(
 	context: EnvironmentContext,
 	itemIndex = 0,
 ): Promise<string> {
-	const environment = await getRdMarketingEnvironment(context, itemIndex);
-	return MARKETING_BASE_URLS[environment];
+	const credentials = await getCredentialsSafely(context, itemIndex);
+	const baseUrl = String(credentials?.baseUrl ?? '').trim();
+	if (!baseUrl) {
+		return DEFAULT_MARKETING_BASE_URL;
+	}
+	return baseUrl.replace(/\/+$/, '');
 }
 
 export async function rdMarketingRequest<T = IDataObject | IDataObject[]>(

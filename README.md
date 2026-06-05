@@ -22,14 +22,11 @@ Community node to integrate n8n with RD Station Marketing.
 
 Credential: RD Station Marketing (OAuth2).
 
-The credential supports Staging and Production environments.
+The credential supports a configurable Base URL for the RD Station Marketing API.
 
-API base URLs:
+Default API base URL: `https://api.rd.services`
 
-- Production: `https://api.rd.services`
-- Staging: `https://api-staging.rd.services`
-
-OAuth URLs are selected automatically from the environment.
+OAuth authorization always uses `https://accounts.rdstation.com/oauth/authorize`, and the access token endpoint is derived from the Base URL.
 
 ## Local Development
 
