@@ -1,4 +1,4 @@
-import type { ICredentialType, INodeProperties, Icon } from 'n8n-workflow';
+import type { ICredentialTestRequest, ICredentialType, INodeProperties, Icon } from 'n8n-workflow';
 
 export class RdStationMarketingApi implements ICredentialType {
 	name = 'rdStationMarketingApi';
@@ -6,6 +6,13 @@ export class RdStationMarketingApi implements ICredentialType {
 	documentationUrl = 'https://developers.rdstation.com/reference';
 	extends = ['oAuth2Api'];
 	icon: Icon = 'file:rdstation.svg';
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: '={{$credentials.baseUrl.replace(/\\/$/, "")}}',
+			url: '/platform/contacts/fields',
+			method: 'GET',
+		},
+	};
 
 	properties: INodeProperties[] = [
 		{
