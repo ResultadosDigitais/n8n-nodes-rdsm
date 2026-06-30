@@ -34,7 +34,8 @@ export class RdStationMarketingApi implements ICredentialType {
 			name: 'authUrl',
 			type: 'hidden',
 			required: true,
-			default: 'https://accounts.rdstation.com/oauth/authorize',
+			default:
+				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/auth/dialog" }}',
 		},
 		{
 			displayName: 'Access Token URL',
@@ -42,7 +43,7 @@ export class RdStationMarketingApi implements ICredentialType {
 			type: 'hidden',
 			required: true,
 			default:
-				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/oauth2/token" }}',
+				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/auth/token?token_by=code" }}',
 		},
 		{
 			displayName: 'Scope',
