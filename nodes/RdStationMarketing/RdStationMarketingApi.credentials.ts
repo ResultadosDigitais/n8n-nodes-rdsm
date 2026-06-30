@@ -34,7 +34,8 @@ export class RdStationMarketingApi implements ICredentialType {
 			name: 'authUrl',
 			type: 'hidden',
 			required: true,
-			default: 'https://api.rd.services/auth/dialog',
+			default:
+				'={{ (() => { let url = String($self["baseUrl"] ?? "").trim(); while (url.endsWith("/")) { url = url.slice(0, -1); } return url; })() + "/auth/dialog" }}',
 		},
 		{
 			displayName: 'Access Token URL',

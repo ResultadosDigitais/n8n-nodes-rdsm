@@ -28,7 +28,7 @@ Default API base URL: `https://api.rd.services`
 
 | Step | Endpoint |
 | ---- | -------- |
-| Authorization | `https://api.rd.services/auth/dialog` |
+| Authorization | `{baseUrl}/auth/dialog` |
 | Access token (code exchange) | `{baseUrl}/auth/token?token_by=code` |
 | Token refresh | `{baseUrl}/auth/token` |
 
