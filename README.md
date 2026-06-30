@@ -20,13 +20,19 @@ Community node to integrate n8n with RD Station Marketing.
 
 ## Authentication
 
-Credential: RD Station Marketing (OAuth2).
+Credential: **RD Station Marketing (OAuth2)**.
 
-The credential supports a configurable Base URL for the RD Station Marketing API.
+Create an app in the [RD Station App Store](https://developers.rdstation.com/reference/criar-aplicativo-appstore) and use its `client_id` and `client_secret` in the n8n credential. Register the n8n **OAuth Redirect URL** (shown in the credential screen) as the app callback URL — it must match exactly.
 
 Default API base URL: `https://api.rd.services`
 
-OAuth authorization always uses `https://accounts.rdstation.com/oauth/authorize`, and the access token endpoint is derived from the Base URL.
+| Step | Endpoint |
+| ---- | -------- |
+| Authorization | `https://api.rd.services/auth/dialog` |
+| Access token (code exchange) | `{baseUrl}/auth/token?token_by=code` |
+| Token refresh | `{baseUrl}/auth/token` |
+
+See the [RD Station Marketing authentication docs](https://developers.rdstation.com/reference/autentica%C3%A7%C3%A3o) for the full OAuth2 flow.
 
 ## Local Development
 
